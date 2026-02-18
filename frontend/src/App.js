@@ -17,6 +17,8 @@ import {
   CircularProgress,
 } from "@mui/material";
 import ELDLogView from "./ELDLogView";
+import DailyLogSheet from "./Components/DailyLogSheet";
+
 
 
 function App() {
@@ -82,6 +84,18 @@ function App() {
       offDuty: offDuty.toFixed(2),
     };
   };
+
+  const groupLogsByDay = () => {
+    const grouped = {};
+    logs.forEach((log) => {
+      const day = new Date(log.start).toDateString();
+      if (!grouped[day]) grouped[day] = [];
+      grouped[day].push(log);
+    });
+    return grouped;
+  };
+
+  const groupedLogs = groupLogsByDay();
 
 
   return (
@@ -194,6 +208,9 @@ function App() {
                 ))}
               </TableBody>
             </Table>
+            {Object.keys(groupedLogs).map((day) => (
+              <DailyLogSheet key={day} logs={groupedLogs[day]} date={day} />
+            ))}
           </TableContainer>
         )}
         <ELDLogView logs={logs} />
