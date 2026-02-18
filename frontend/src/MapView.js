@@ -1,15 +1,9 @@
 import { MapContainer, TileLayer, Polyline } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-
-function decodePolyline(encoded) {
-  const polyline = require("@mapbox/polyline");
-  return polyline.decode(encoded);
-}
+import polyline from "@mapbox/polyline";
 
 function MapView({ geometry1, geometry2 }) {
   if (!geometry1) return null;
-
-  const polyline = require("@mapbox/polyline");
 
   const coords1 = polyline.decode(geometry1);
   const coords2 = geometry2 ? polyline.decode(geometry2) : [];
