@@ -39,7 +39,7 @@ function App() {
 
     try {
       const response = await axios.post(
-        "https://fullstack-trip-planner-1.onrender.com/api/plan/",
+        "https://fullstack-trip-backend.onrender.com/api/plan/",
         {
           current_location: currentLocation,
           pickup_location: pickupLocation,
