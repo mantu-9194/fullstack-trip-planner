@@ -8,7 +8,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", "unsafe-secret-key")
 
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "*").split(",")
+ALLOWED_HOSTS = ["*"]
 
 # Applications
 INSTALLED_APPS = [
